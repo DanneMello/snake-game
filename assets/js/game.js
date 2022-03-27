@@ -141,6 +141,7 @@ var Game = {
     wallCollision: function (head) {
         if (head.x >= 600 || head.x < 0 || head.y >= 450 || head.y < 0) {
             game.state.start('Game_Over');
+            dieSound.play();
         }
     }
 };
