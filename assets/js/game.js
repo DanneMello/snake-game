@@ -63,7 +63,7 @@ var Game = {
             new_direction = 'down';
         }
 
-        speed = Math.min(10, Math.floor(score / 5));
+        speed = Math.min(10, Math.floor(score / 3));
         speedTextValue.text = '' + speed;
         updateDelay++;
 
