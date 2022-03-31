@@ -1,7 +1,8 @@
-var cobra, coelho, squareSize, score, speed,
+var cobra, michaelJakson, squareSize, score, speed,
     updateDelay, direction, new_direction,
     addNew, cursors, scoreTextValue, 
-    speedTextValue, textStyle_Key, textStyle_Value;
+    speedTextValue, textStyle_Key, textStyle_Value,
+    nextLevel = 1, tagNivel = 1;
 
 // Som dos eventos
 const dieSound = new Audio('./assets/sound/DieSound_CC0_by_EugeneLoza.ogg');
@@ -10,12 +11,12 @@ const eatSound = new Audio('./assets/sound/eatSound.mp3');
 var Game = {
     preload: function () {
         game.load.image('cobra', './assets/images/cabeca.png');
-        game.load.image('coelho', './assets/images/coelho.png');
-        game.load.image('corpo', './assets/images/corpo.png');
+        game.load.image('michaelJakson', './assets/images/michaelJakson.jpg');
+        game.load.image('corpo', './assets/images/corpo.jpeg');
     },
     create: function () {
         cobra = [];
-        coelho = {};
+        michaelJakson = {};
         squareSize = 15;
         score = 0;
         speed = 0;
@@ -32,7 +33,7 @@ var Game = {
             cobra[i] = game.add.sprite(150 + i * squareSize, 150, 'corpo');
         }
 
-        this.generateCoelho();
+        this.generateMichaelJakson();
 
         textStyle_Key = {
             font: "bold 14px sans-serif",
@@ -103,25 +104,25 @@ var Game = {
                 addNew = false;
             }
 
-            this.coelhoCollision();
+            this.michaelJaksonCollision();
             this.selfCollision(firstCell);
             this.wallCollision(firstCell);
         }
     },
 
-    generateCoelho: function () {
+    generateMichaelJakson: function () {
         var randomX = Math.floor(Math.random() * 40) * squareSize,
             randomY = Math.floor(Math.random() * 30) * squareSize;
 
-        coelho = game.add.sprite(randomX, randomY, 'coelho');
+        michaelJakson = game.add.sprite(randomX, randomY, 'michaelJakson');
     },
 
-    coelhoCollision: function () {
+    michaelJaksonCollision: function () {
         for (var i = 0; i < cobra.length; i++) {
-            if (cobra[i].x == coelho.x && cobra[i].y == coelho.y) {
+            if (cobra[i].x == michaelJakson.x && cobra[i].y == michaelJakson.y) {
                 addNew = true;
-                coelho.destroy();
-                this.generateCoelho();
+                michaelJakson.destroy();
+                this.generateMichaelJakson();
                 score++;
                 eatSound.play();
                 scoreTextValue.text = score.toString();

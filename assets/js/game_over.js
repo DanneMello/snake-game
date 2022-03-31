@@ -1,7 +1,7 @@
 var Game_Over = {
     
     // Aqui carregamos todos os recursos necessários para o nível.
-    // No nosso caso, são a bolinha para a cobra e o coelho como presa.
+    // No nosso caso, são a bolinha para a cobra e o michaelJakson como presa.
     preload : function() {
         game.load.image('gameover', './assets/images/game_over.jpeg');
     },
